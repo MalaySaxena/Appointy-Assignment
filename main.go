@@ -42,7 +42,7 @@ func main() {
 	r.HandleFunc("/api/users/{id}", getUser).Methods("GET")
 	r.HandleFunc("/api/users", createUser).Methods("POST")
 	r.HandleFunc("/contacts", newContact).Methods("POST")
-	r.HandleFunc("/contact", newContact).Methods("POST")
+	r.HandleFunc("/contac", newContact).Methods("POST")
 
 	config := helper.GetConfiguration()
 	log.Fatal(http.ListenAndServe(config.Port, r))
