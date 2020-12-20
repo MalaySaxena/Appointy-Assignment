@@ -7,18 +7,15 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 
-func ConnectDB() *mongo.Collection {
-	config := GetConfiguration()
-	// Set client options
-	clientOptions := options.Client().ApplyURI(config.ConnectionString)
+func ConnectDB() *mongo.Client {
 
-	// Connect to MongoDB
+	clientOptions := options.Client().ApplyURI("mongodb+srv://msdy:LrjQf9zr5UKZivS@cluster0.gn6vk.mongodb.net/appointy_assignment?retryWrites=true&w=majority")
+
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 
 	if err != nil {
@@ -49,23 +46,4 @@ func GetError(err error, w http.ResponseWriter) {
 
 	w.WriteHeader(response.StatusCode)
 	w.Write(message)
-}
-
-type Configuration struct {
-	Port             string
-	ConnectionString string
-}
-
-func GetConfiguration() Configuration {
-	err := godotenv.Load("./.env")
-
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
-
-	configuration := Configuration{
-		"mongodb+srv://msdy:<passwod>@cluster0.gn6vk.mongodb.net/appointy_assignment?retryWrites=true&w=majority",
-	}
-
-	return configuration
 }
