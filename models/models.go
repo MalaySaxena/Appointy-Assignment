@@ -13,5 +13,7 @@ type User struct {
 }
 
 type Contact struct {
-	
+	userIdOne int `json:"user1_id" bson:"user1_id"`
+	userIdTwo int `json:"user2_id" bson:"user2_id"`
+	meetTimestamp string `json:"meet_timestamp" bson:"meet_timestamp"`
 }
