@@ -64,7 +64,7 @@ func GetConfiguration() Configuration {
 	}
 
 	configuration := Configuration{
-		"mongodb+srv://msdy:<password>@cluster0.gn6vk.mongodb.net/appointy_assignment?retryWrites=true&w=majority",
+		"mongodb+srv://msdy:<passwod>@cluster0.gn6vk.mongodb.net/appointy_assignment?retryWrites=true&w=majority",
 	}
 
 	return configuration
